@@ -12,7 +12,7 @@ export default function App() {
       <Text style={styles.heading}>Computer Science BSc</Text>
       <ScrollView horizontal={false}>
         <View style={styles.itemContainer}>
-          <Text style={styles.moduleText}>Mobile Application Development {a}</Text>
+          <Text style={styles.moduleText}>Mobile Application Development {a} hi</Text>
           <Image source={require('./assets/mobile.jpg')} style={styles.img} />
         </View>
         <View style={styles.itemContainer}>

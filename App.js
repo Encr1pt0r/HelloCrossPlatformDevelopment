@@ -7,6 +7,7 @@ import indexScreen from './src/screens/indexSreen';
 import ScreenOne from './src/screens/screenone';
 import ScreenTwo from './src/screens/screentwo';
 import AddItemScreen from './src/screens/additemscreen';
+import ListViewScreen from './src/screens/ListViewScreen';
 
 const Stack = createStackNavigator();
 
@@ -14,7 +15,12 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="add">
+      <Stack.Navigator initialRouteName="list">
+        <Stack.Screen 
+          name="list"
+          component={ListViewScreen}
+          options={{title: "List all items"}}
+        />
         <Stack.Screen 
           name="add"
           component={AddItemScreen}

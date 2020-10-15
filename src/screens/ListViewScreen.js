@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
 const myDiary = [
     {
@@ -15,32 +15,39 @@ const myDiary = [
     }
 ];
 
-const ListViewScreen = () => {
-
+const ListViewScreen = ({ navigation }) => {
     const [entry, setEntry] = useState(myDiary);
     //console.log(entry);
-
     return (
         <View>
             <FlatList
                 data={entry}
-                keyExtractor={(e) => e.id.toString()}
-                renderItem={({item}) =>  {
-                    console.log(item); 
+                keyExtractor={
+                    (element) => element.id.toString()
+                }
+                renderItem={({ item }) => {
+                    console.log(item);
                     // if you look closely it has properties you can call, 
                     //I did this in the arrow function above to call the title
-                    return (    
-                        <View style={styles.itemContainer}>
-                            <View style={styles.dateContainer}>
-                                <Text style={styles.dateText}>
-                                    {item.date.toLocaleDateString()}
-                                </Text>
-                                <Text>
-                                    {item.date.toLocaleTimeString()}
-                                </Text>
+                    return (
+                        <TouchableOpacity
+                            onPress={() => {
+                                console.log("I've been pressed");
+                            }}
+                        >
+                            <View style={styles.itemContainer}>
+                                <View style={styles.dateContainer}>
+                                    <Text style={styles.dateText}>
+                                        {item.date.toLocaleDateString()}
+                                    </Text>
+                                    <Text>
+                                        {item.date.toLocaleTimeString()}
+                                    </Text>
+                                </View>
+                                <Text style={styles.titleText}>{item.title}</Text>
                             </View>
-                            <Text style={styles.titleText}>{item.title}</Text>
-                        </View>
+                        </TouchableOpacity>
+
                     );
                 }}
             />
@@ -51,7 +58,7 @@ const ListViewScreen = () => {
 const styles = new StyleSheet.create({
     itemContainer: {
         marginTop: 15,
-        padding:  15,
+        padding: 15,
         borderBottomWidth: 1,
         flex: 1,
         flexDirection: 'row',

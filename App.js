@@ -8,6 +8,7 @@ import ScreenOne from './src/screens/screenone';
 import ScreenTwo from './src/screens/screentwo';
 import AddItemScreen from './src/screens/additemscreen';
 import ListViewScreen from './src/screens/ListViewScreen';
+import ViewItemScreen from './src/screens/ViewItemScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="list">
+        <Stack.Screen
+          name="View"
+          component={ViewItemScreen}
+          options= {{title: "View Item"}}
+        />
         <Stack.Screen 
           name="list"
           component={ListViewScreen}
